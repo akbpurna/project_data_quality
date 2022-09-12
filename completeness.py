@@ -117,5 +117,4 @@ for i in range(0, c_date(start_date)+1):
     connection.close()
     print("Loop ke- ", i+1, " | ",date," | ", l_time())
     ndays += 1
-
 print("DONE")
