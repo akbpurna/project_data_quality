@@ -68,7 +68,6 @@ def del_dup_r_t(s_dest, t_dest, date):
     return query
 
 #CONNECTION
-con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
-        host = '10.54.18.24', port = '5432', dbname = 'data_quality', user = 'postgres', password = 'P@ssw0rd*123')
-
-conn_pg = pg.connect(host = '10.54.18.24', port = '5432', dbname = 'data_quality', user = 'postgres', password = 'P@ssw0rd*123')
+con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}").format(
+        host = '...', port = '...', dbname = '...', user = '...', password = '...')
+conn_pg = pg.connect(host = '...', port = '...', dbname = '...', user = '...', password = '...')
