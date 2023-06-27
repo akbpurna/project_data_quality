@@ -8,15 +8,15 @@ warnings.filterwarnings('ignore')
 
 
 #RECEIVE PARAMETER
-param_host                      = '10.54.18.24'
-param_port                      = '5432'
-param_dbname                    = 'data_quality'
-param_user                      = 'postgres' 
-param_pw                        = 'P@ssw0rd*123'
-param_schema_source             = 'data_master'
-param_schema_destination        = 'anomaly'
-param_table_destination         = 'core' #cukup ganti ini saja, nanti dibuat dinamis berdasarkan pemanggilan
-param_table_source_master       = 'data_quality_{}'.format(param_table_destination) #ganti nama tabelnya
+param_host                      = '...'
+param_port                      = '...'
+param_dbname                    = '...'
+param_user                      = '...' 
+param_pw                        = '...'
+param_schema_source             = '...'
+param_schema_destination        = '...'
+param_table_destination         = '...'
+param_table_source_master       = '...'
 
 date = '2022-09-20'
 n = 10
