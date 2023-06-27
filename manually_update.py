@@ -26,13 +26,13 @@ def nloop(start_date, ndays):
     return date_for_c
 
 #RECEIVE PARAMETER
-param_host              = '10.54.18.24'
-param_port              = '5432'
-param_dbname            = 'data_quality'
-param_user              = 'postgres' 
-param_pw                = 'P@ssw0rd*123'
-param_schema_source     = 'data_master'
-param_schema_dest       = 'anomaly'
+param_host              = '...'
+param_port              = '...'
+param_dbname            = '...'
+param_user              = '...' 
+param_pw                = '...'
+param_schema_source     = '...'
+param_schema_dest       = '...'
 
 start_date              = '2022-09-21'      #parameter (tanggal yang direload) 2022-09-01
 param_table_dest        = 'ran'    #parameternya (nama kategorinya)
@@ -40,7 +40,7 @@ param_table_dest        = 'ran'    #parameternya (nama kategorinya)
 param_table_source      = f'data_quality_{param_table_dest}'
 param_tabel_hist        = f'h_{param_table_dest}'
 
-con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
+con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}").format(
         host = param_host, port = param_port, dbname = param_dbname, user = param_user, password = param_pw )
 n = 7
 ndays = 0
