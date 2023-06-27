@@ -7,10 +7,8 @@ warnings.filterwarnings('ignore')
 #RECEIVE PARAMETER
 param_schema_source     =
 param_schema_dest       =
-
 start_date              = 
 param_table_dest        = 
-
 param_table_source      = 
 param_tabel_hist        = 
 
