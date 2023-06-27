@@ -118,11 +118,11 @@ for i in range(0, c_date(start_date)+1):
     conn_pg.close()
 
     # #insert_into_result
-    # df.to_sql(param_table_dest, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
+    df.to_sql(param_table_dest, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
 
     # # insert_into_history
-    # df = df.loc[df['status'].isin(['anomaly']) == True]
-    # df.to_sql(param_tabel_hist, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
+    df = df.loc[df['status'].isin(['anomaly']) == True]
+    df.to_sql(param_tabel_hist, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
 
     print("Loop ke- ", i+1, " | ",date," | ", l_time())
     ndays += 1
