@@ -23,22 +23,22 @@ def nloop(start_date, ndays):
 
 
 #RECEIVE PARAMETER
-param_host              = '10.54.18.24'
-param_port              = '5432'
-param_dbname            = 'data_quality'
-param_user              = 'postgres' 
-param_pw                = 'P@ssw0rd*123'
-param_table_dest        = 'vas' #parameternya (nama kategorinya)
-param_schema_dest       = 'anomaly'
-param_table_source      = 'data_quality_{}'.format(param_table_dest)
-param_schema_source     = 'data_master'
+param_host              = '...'
+param_port              = '...'
+param_dbname            = '...'
+param_user              = '...' 
+param_pw                = '...'
+param_table_dest        = '...'
+param_schema_dest       = '...'
+param_table_source      = '...'
+param_schema_source     = '...'
 
 # #CONNECT TO DB
 con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
         host = param_host, port = param_port, dbname = param_dbname, user = param_user, password = param_pw )
 n = 7
 ndays = 0
-start_date = '2022-09-07' #parameter (tanggal yang direload)
+start_date = '2022-09-07'
 print("Start: ",param_table_dest.title()," | ", l_time())
 
 for i in range(0, c_date(start_date)+1):
@@ -47,7 +47,7 @@ for i in range(0, c_date(start_date)+1):
     delete from {schema_destination}.{table_destination}
     where date = '{date}';
     
-    with data_cek as ( -- data yang mau di bandingkan
+    with data_cek as (
         select
             date,
             kpi, 
@@ -59,7 +59,7 @@ for i in range(0, c_date(start_date)+1):
             value
         from {schema_source}.{table_source} -- nama tabel masternya
         where date = '{date}'
-    ), data_baseline as ( -- data baselinenya
+    ), data_baseline as (
         select
             kpi, 
             granularity, 
@@ -77,7 +77,7 @@ for i in range(0, c_date(start_date)+1):
             from (
                 select 
                     * 
-                from {schema_destination}.{table_destination}  -- tabel hasil | ganti tabelnya kalau udah beres semua
+                from {schema_destination}.{table_destination}
                 where 
                     status = 'ok'
                     and date < '{date}'
@@ -102,7 +102,6 @@ for i in range(0, c_date(start_date)+1):
     	 when cek.value isnull then 'anomaly'
 	     when cek.value >= bl.b_bawah and cek.value <= bl.b_atas then 'ok'
          else 'anomaly' end as status
-    --into {schema_destination}.{table_destination}
     from data_cek cek left join data_baseline bl
     on
         cek.kpi = bl.kpi and
@@ -116,7 +115,6 @@ for i in range(0, c_date(start_date)+1):
     connection = create_engine(con_engine).connect()
     connection.execute(query)
     connection.close()
-    print("Loop ke- ", i+1, " | ",date," | ", l_time())
     ndays += 1
 
 print("DONE")
