@@ -98,5 +98,5 @@ conn_pg.close()
 df.to_sql(param_table_dest, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
 
 # # insert_into_history
-# df = df.loc[df['status'].isin(['anomaly']) == True]
-# df.to_sql(param_tabel_hist, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
+df = df.loc[df['status'].isin(['anomaly']) == True]
+df.to_sql(param_tabel_hist, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)

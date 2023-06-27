@@ -5,8 +5,6 @@ from urllib.parse import quote
 from sqlalchemy import create_engine
 warnings.filterwarnings('ignore')
 
-
-
 #RECEIVE PARAMETER
 param_host                      = '...'
 param_port                      = '...'
@@ -62,6 +60,6 @@ df = pd.read_sql_query(query,conn_pg)
 conn_pg.close()
 
 #insert_into_result
-con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
+con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}").format(
         host = param_host, port = param_port, dbname = param_dbname, user = param_user, password = param_pw )
 df.to_sql(param_table_destination, con = con_engine, if_exists = 'append', schema = param_schema_destination, index=False)

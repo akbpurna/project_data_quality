@@ -8,25 +8,25 @@ from datetime import datetime, timedelta
 warnings.filterwarnings('ignore')
 
 #RECEIVE PARAMETER
-param_host                  = '10.54.18.24'
-param_port                  = '5432'
-param_dbname                = 'data_quality'
-param_user                  = 'postgres' 
-param_pw                    = 'P@ssw0rd*123'
-param_schema_source         = 'data_master'
-param_schema_destination    = 'completeness'
+param_host                  = '...'
+param_port                  = '...'
+param_dbname                = '...'
+param_user                  = '...' 
+param_pw                    = '...'
+param_schema_source         = '...'
+param_schema_destination    = '...'
 
-param_kpi                   = 'payload-mbyte'         #parameter          yg dikirim dari tabel interface
-param_node                  = 'ALL'         #parameter          yg dikirim dari tabel interface
-param_level                 = 'ne'          #parameter          yg dikirim dari tabel interface
-param_vendor                = 'Nokia'       #parameter          yg dikirim dari tabel interface
-param_granularity           = 'daily'       #parameter          yg dikirim dari tabel interface
-param_loc                   = 'BALINUSRA'   #parameter location yg dikirim dari tabel interface
-start_date                  = '2022-09-13'  #parameter tanggal  yg dikirim dari tabel interface
-param_table_destination     = 'core'        #parameter categori yg dikirim dari tabel interface
+param_kpi                   = '...'         #parameter          yg dikirim dari tabel interface
+param_node                  = '...'         #parameter          yg dikirim dari tabel interface
+param_level                 = '...'          #parameter          yg dikirim dari tabel interface
+param_vendor                = '...'       #parameter          yg dikirim dari tabel interface
+param_granularity           = '...'       #parameter          yg dikirim dari tabel interface
+param_loc                   = '...'   #parameter location yg dikirim dari tabel interface
+start_date                  = '...'  #parameter tanggal  yg dikirim dari tabel interface
+param_table_destination     = '...'        #parameter categori yg dikirim dari tabel interface
 
-param_table_source          = 'data_quality_{}'.format(param_table_destination)
-con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
+param_table_source          = '...'
+con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}").format(
     host = param_host, port = param_port, dbname = param_dbname, user = param_user, password = param_pw )
 
 n = 7

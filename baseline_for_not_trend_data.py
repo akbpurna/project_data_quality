@@ -5,8 +5,6 @@ from sqlalchemy import create_engine
 from urllib.parse import quote 
 warnings.filterwarnings('ignore')
 
-
-
 #RECEIVE PARAMETER
 param_host                      = '...'
 param_port                      = '...'

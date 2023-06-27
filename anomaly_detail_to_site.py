@@ -33,7 +33,6 @@ n = 7
 
 conn_pg = pg.connect(host=param_host, port=param_port, dbname=param_dbname, user=param_user, password=param_pw)
 
-#query cek axisting data
 query0 = """SELECT EXISTS(
 		SELECT * 
 		FROM {s_source}.{t_source} 
@@ -61,7 +60,6 @@ query0 = """SELECT EXISTS(
 exist = pd.read_sql_query(query0,conn_pg)
 exist = exist['hasil'][0]
 
-# query menghitung jumlah row yang ok (basel)
 query1 = """
         select count(*) as jml
         from {s_dest}.{t_dest}
@@ -86,7 +84,6 @@ basel = pd.read_sql_query(query1,conn_pg)
 basel = basel['jml'][0]
 conn_pg.close()
 
-# query hitung ok > 7 row
 query2 = """
             with data_cek as (
                 select
@@ -181,7 +178,6 @@ query2 = """
                         s_dest      = param_schema_destination
                         )
 
-# query no data
 query3 = """
     with data_baseline as (
         select
@@ -249,7 +245,6 @@ query3 = """
                         vend = param_vendor, grad = param_granularity, t_dest = param_table_destination, s_dest = param_schema_destination
                         )
 
-# query delete duplikasi data
 query4 = """
 delete from {s_dest}.{t_dest}
 where   date            = '{date}'
@@ -274,7 +269,6 @@ connection = create_engine(con_engine).connect()
 connection.execute(query4)
 connection.close()
 
-# query membuat baseline
 query5 = """
         select date, kpi, granularity, node, vendor, "level", "location", value, 'ok' as status
         from {s_source}.{t_source}
@@ -301,7 +295,7 @@ query5 = """
                     )
 conn_pg = pg.connect(host=param_host, port=param_port, dbname=param_dbname, user=param_user, password=param_pw)
 
-if exist == 1: # jika data exist?
+if exist == 1: 
     if basel < 7:
         inisiasi = pd.read_sql_query(query5,conn_pg)
         inisiasi.to_sql(param_table_destination, con = con_engine, if_exists = 'append', schema = param_schema_destination, index=False)

@@ -21,7 +21,7 @@ param_table_dest        =
 param_table_source      = 
 param_tabel_hist        = 
 
-con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
+con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}").format(
         host = param_host, port = param_port, dbname = param_dbname, user = param_user, password = param_pw )
 n = 7
 ndays = 0
@@ -98,5 +98,5 @@ conn_pg.close()
 df.to_sql(param_table_dest, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
 
 # # insert_into_history
-# df = df.loc[df['status'].isin(['anomaly']) == True]
-# df.to_sql(param_tabel_hist, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
+df = df.loc[df['status'].isin(['anomaly']) == True]
+df.to_sql(param_tabel_hist, con = con_engine, if_exists = 'append', schema = param_schema_dest, index=False)
