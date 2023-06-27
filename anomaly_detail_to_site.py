@@ -8,27 +8,25 @@ from datetime import datetime, timedelta
 warnings.filterwarnings('ignore')
 
 #RECEIVE PARAMETER
-param_host                  = '10.54.18.24'
-param_port                  = '5432'
-param_dbname                = 'data_quality'
-param_user                  = 'postgres' 
-param_pw                    = 'P@ssw0rd*123'
-param_schema_source         = 'data_master'
-param_schema_destination    = 'anomaly'
+param_host                  = '...'
+param_port                  = '...'
+param_dbname                = '...'
+param_user                  = '...' 
+param_pw                    = '...'
+param_schema_source         = '...'
+param_schema_destination    = '...'
 
-				
+param_kpi                   = '...' 
+param_node                  = '...' 
+param_level                 = '...' 
+param_vendor                = '...' 
+param_granularity           = '...' 
+param_loc                   = '...' 
+start_date                  = '...' 
+param_table_destination     = '...' 
 
-param_kpi                   = 'coverage_share'  #parameter          yg dikirim dari tabel interface
-param_node                  = '4G'              #parameter          yg dikirim dari tabel interface
-param_level                 = 'kabupaten'       #parameter          yg dikirim dari tabel interface
-param_vendor                = '3'               #parameter          yg dikirim dari tabel interface
-param_granularity           = 'daily'           #parameter          yg dikirim dari tabel interface
-param_loc                   = 'BANJAR'          #parameter location yg dikirim dari tabel interface
-start_date                  = '2022-08-28'      #parameter tanggal  yg dikirim dari tabel interface
-param_table_destination     = 'tutela'          #parameter categori yg dikirim dari tabel interface
-
-param_table_source          = 'data_quality_{}'.format(param_table_destination)
-con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}" % quote('P@ssw0rd*123')).format(
+param_table_source          = '...'
+con_engine = ("postgresql+psycopg2://{user}:%s@{host}:{port}/{dbname}").format(
     host = param_host, port = param_port, dbname = param_dbname, user = param_user, password = param_pw )
 
 n = 7
